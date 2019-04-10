@@ -9,7 +9,6 @@ class FearlessPipeline(object):
     collection = 'fearlessData'
 
     def __init__(self, mongo_uri, mongo_db):
-        #uri => string used to identify a resource on network
         self.mongo_uri = mongo_uri
         self.mongo_db = mongo_db
 
@@ -24,12 +23,14 @@ class FearlessPipeline(object):
     def open_spider(self, spider):
         self.client= MongoClient(self.mongo_uri)
         self.db= self.client[self.mongo_db]
-    
+
+    # process the data and insert into database
+    def process_item(self, item, spider):
+        self.db[self.collection].insert_one(dict(item))
+        return item  
+
     #close the conection
     def close_spider(self):
         self.client.close()
     
-    # process the data and insert into database
-    def process_item(self, item, spider):
-        self.db[self.collection].insert_one(dict(item))
-        return item
+

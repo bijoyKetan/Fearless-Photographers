@@ -2,6 +2,8 @@ import scrapy
 from scrapy.loader import ItemLoader
 from fearless.items import FearlessItem
 
+
+#First spider that scrapes the inquiries from potential clients. 
 class FearlessScraper (scrapy.Spider):
     #identity
     name = "fearless"

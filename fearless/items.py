@@ -58,3 +58,5 @@ class FearlessItem(scrapy.Item):
         input_processor = MapCompose(finalUrl),
         output_processor = TakeFirst()
     )
+
+    # Responded = scrapy.Field()
