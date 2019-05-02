@@ -8,4 +8,4 @@ eggs/
 build/
 dbs/
 project.egg-info/
-logs/
+logs/*
