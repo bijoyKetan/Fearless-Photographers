@@ -5,7 +5,7 @@ from fearless.items import FearlessItem
 from pymongo import MongoClient
 
 
-class MyspiderSpider(scrapy.Spider):
+class ReplySpider(scrapy.Spider):
     #Connent to mongoDB client and to the database
     client = MongoClient('mongodb://127.0.0.1:27017')
     db = client.fearless
@@ -14,12 +14,12 @@ class MyspiderSpider(scrapy.Spider):
     allowed_domains = ['fearlessphotographers.com']
 
     # The start URLs are filters to contain only those RequestLink that:
-    # 1. Do not have the field Replied
+    # 1. Do not have the field "Replied"
     # 2. Country = { USA, Mexico, Canada}
     start_urls = db.fearlessData.distinct ('RequestLink', 
         {'$and':[
         # {'Country': {'$in': ["USA", "Canada",  "Mexico"]}},
-        {'Country': {'$in': ["Canada"]}},
+        {'Country': {'$in': ["South Africa"]}},
         {"Replied":""}]}
         )
     

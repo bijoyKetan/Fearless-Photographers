@@ -1,6 +1,8 @@
 import scrapy
 from scrapy.loader import ItemLoader
 from fearless.items import FearlessItem
+from fearless.spiders.inquiryReply import ReplySpider
+from scrapy.crawler import CrawlerProcess
 
 
 #First spider that scrapes the inquiries from potential clients. 
@@ -28,3 +30,10 @@ class FearlessScraper (scrapy.Spider):
             loader.add_xpath(field_name = 'Available', xpath = ".//span[@class='info-label' and position() = 6]/following-sibling::text()[1]")
             loader.add_xpath(field_name = 'RequestLink', xpath = ".//@href")
             yield loader.load_item()
+
+
+# # Running two spiders in the same process.
+# process = CrawlerProcess()
+# process.crawl(FearlessScraper)
+# process.crawl(ReplySpider)
+# process.start()

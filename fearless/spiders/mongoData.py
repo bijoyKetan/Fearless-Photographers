@@ -17,16 +17,22 @@ db = client.fearless
 #Comment/uncomment the following sections to test these snippets of code.
 #**********************************************
 
-
+ 
 #**********************************************
 
-links2 = db.fearlessData.distinct ('Name', 
-    {'$and':[
-    # {'Country': {'$in': ["USA", "Canada",  "Mexico"]}},
-    {'Country': {'$in': ["Canada"]}},
-    {"Replied":""}]}
-    )
-pprint (links2)
+# links2 = db.fearlessData.distinct ('Name', 
+#     {'$and':[
+#     # {'Country': {'$in': ["USA", "Canada",  "Mexico"]}},
+#     {'Country': {'$in': ["South Africa"]}},
+#     {"Replied":""}]}
+#     )
+# pprint (links2)
+
+countryCount = db.fearlessData.find(
+#    {'Country': {'$in': ["Anjali", " Canada", " Mexico"]}}
+   {}
+).count()
+print (countryCount)
 
 # db.fearlessData.update_many ({},{'$set': {'Replied': ""}})
 

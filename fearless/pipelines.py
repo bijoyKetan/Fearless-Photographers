@@ -2,6 +2,7 @@
 # See: https://doc.scrapy.org/en/latest/topics/item-pipeline.html
 
 from pymongo import MongoClient
+from scrapy.exceptions import DropItem
 
 # Inherit the  pipeline class
 class FearlessPipeline(object):
@@ -25,9 +26,13 @@ class FearlessPipeline(object):
         self.db= self.client[self.mongo_db]
 
     # process the data and insert into database
+    # The DropItem exception avoids dplicate enntries in database
     def process_item(self, item, spider):
-        self.db[self.collection].insert_one(dict(item))
-        return item  
+        if self.db[self.collection].count_documents({'ID': item.get("ID")}) == 1:
+            raise DropItem ("Item dropped to avoid duplicate insert")
+        else:
+            self.db[self.collection].insert_one(dict(item))
+            return item  
 
     #close the conection
     def close_spider(self):

@@ -4,3 +4,7 @@ __pycache__/
 *.txt
 .vscode/*
 *.DS_Store
+eggs/
+build/
+dbs/
+project.egg-info/
