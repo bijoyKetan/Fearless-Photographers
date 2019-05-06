@@ -65,7 +65,7 @@ ROBOTSTXT_OBEY = True
 # Configure item pipelines
 # See https://doc.scrapy.org/en/latest/topics/item-pipeline.html
 ITEM_PIPELINES = {
-   'fearless.pipelines.FearlessPipeline': 300,
+   'fearless.pipelines.MongoDbPipeline': 250,
 }
 
 # Enable and configure the AutoThrottle extension (disabled by default)
@@ -89,5 +89,5 @@ AUTOTHROTTLE_START_DELAY = 5
 #HTTPCACHE_IGNORE_HTTP_CODES = []
 #HTTPCACHE_STORAGE = 'scrapy.extensions.httpcache.FilesystemCacheStorage'
 
-MONGO_URI= 'mongodb://localhost:27017'
-MONGO_DB= 'fearless'
+MONGO_URI= 'mongodb://heroku_wpb2xwlb:4n07b44ab4cc088il5ium53eq8@ds145146.mlab.com:45146/heroku_wpb2xwlb'
+MONGO_DB= 'heroku_wpb2xwlb'
