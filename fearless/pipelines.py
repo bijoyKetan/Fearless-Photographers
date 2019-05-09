@@ -5,7 +5,7 @@ from pymongo import MongoClient
 from scrapy.exceptions import DropItem
 
 # Inherit the  pipeline class
-class FearlessPipeline(object):
+class MongoDbPipeline(object):
     #Name of the collection where data will be stored
     collection = 'fearlessData'
 
