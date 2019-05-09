@@ -1,7 +1,6 @@
 *.pyc
 __pycache__/
 *.json
-*.txt
 .vscode/*
 *.DS_Store
 eggs/

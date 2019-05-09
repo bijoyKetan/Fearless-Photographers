@@ -1,0 +1,34 @@
+**********************************************
+Launch MongoDB
+1. sudo chown -R `id -un` /data/db
+2. Then enter password
+3. mongod
+Canada = ['Tiffany', 'Jennifer', 'Sheina', 'Tara', 'Julia']
+SA = ['Kathrin', 'Denise', 'Zelda', 'Lisa', 'Marcel', 'Marijke']
+
+**********************************************
+Core Tasks:
+- Create git repo  => DONE
+- Learn and implement the git workflow => DONE
+- Integrate the spiders to run concurrently
+- Insert only unique items in Mongo DB
+- Schedule the periodic jobs
+- Extract all data into a csv
+- Write the Jupyter notebook 
+
+**********************************************
+Analysis details/questions to ponder:
+- A geographical heatmat of the wedding inquiries
+- A summary of the top 5 cities  2018 and how the inquiries have varied in the last few years. 
+- Consider absolute growth and market share growth. 
+
+
+**********************************************
+Sections of the report:
+- Project overview
+- Webscraping methodology, including why scrapy
+- Business justification. 
+- Benefit 
+- In scope and out of scope items
+- The actual analysis with collected data. 
+- Improvement opportunities (Want to have a dashboard in future where users can specify what they want to set).
