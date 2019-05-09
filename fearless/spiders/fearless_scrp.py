@@ -37,3 +37,6 @@ class FearlessScraper (scrapy.Spider):
 # process.crawl(FearlessScraper)
 # process.crawl(ReplySpider)
 # process.start()
+
+# if __name__ == "__main__":
+#     print ("Script seems to work!")
