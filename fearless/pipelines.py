@@ -28,11 +28,15 @@ class MongoDbPipeline(object):
     # process the data and insert into database
     # The DropItem exception avoids dplicate enntries in database
     def process_item(self, item, spider):
-        if self.db[self.collection].count_documents({'ID': item.get("ID")}) == 1:
-            raise DropItem ("Item dropped to avoid duplicate insert")
-        else:
-            self.db[self.collection].insert_one(dict(item))
-            return item  
+        # if self.db[self.collection].count_documents({'ID': item.get("ID")}) == 1:
+        #     raise DropItem ("Item dropped to avoid duplicate insert")
+        # else:
+        #     self.db[self.collection].insert_one(dict(item))
+        #     return item  
+
+        # without check for duplication
+        self.db[self.collection].insert_one(dict(item))
+        return item
 
     #close the conection
     def close_spider(self):
