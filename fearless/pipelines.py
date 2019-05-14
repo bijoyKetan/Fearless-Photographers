@@ -39,7 +39,7 @@ class MongoDbPipeline(object):
         return item
 
     #close the conection
-    def close_spider(self):
+    def close_spider(self, spider):
         self.client.close()
     
 

@@ -59,4 +59,6 @@ class FearlessItem(scrapy.Item):
         output_processor = TakeFirst()
     )
 
-    # Responded = scrapy.Field()
+    Replied = scrapy.Field(
+        output_processor = TakeFirst()
+    )

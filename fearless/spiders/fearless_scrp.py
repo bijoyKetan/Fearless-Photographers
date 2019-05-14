@@ -4,6 +4,10 @@ from fearless.items import FearlessItem
 from fearless.spiders.inquiryReply import ReplySpider
 from scrapy.crawler import CrawlerProcess
 
+from twisted.internet import reactor
+from scrapy.crawler import CrawlerRunner
+from scrapy.utils.log import configure_logging
+
 
 #First spider that scrapes the inquiries from potential clients. 
 class FearlessScraper (scrapy.Spider):
@@ -29,14 +33,5 @@ class FearlessScraper (scrapy.Spider):
             loader.add_xpath(field_name = 'Type', xpath = ".//span[@class='info-label' and position() = 5]/following-sibling::text()[1]")
             loader.add_xpath(field_name = 'Available', xpath = ".//span[@class='info-label' and position() = 6]/following-sibling::text()[1]")
             loader.add_xpath(field_name = 'RequestLink', xpath = ".//@href")
+            loader.add_value(field_name = 'Replied', value='')
             yield loader.load_item()
-
-
-# # Running two spiders in the same process.
-# process = CrawlerProcess()
-# process.crawl(FearlessScraper)
-# process.crawl(ReplySpider)
-# process.start()
-
-# if __name__ == "__main__":
-#     print ("Script seems to work!")

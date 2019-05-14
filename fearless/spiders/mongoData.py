@@ -28,11 +28,11 @@ db = client.fearless
 #     )
 # pprint (links2)
 
-countryCount = db.fearlessData.find(
-#    {'Country': {'$in': ["Anjali", " Canada", " Mexico"]}}
-   {}
-).count()
-print (countryCount)
+# countryCount = db.fearlessData.find(
+# #    {'Country': {'$in': ["Anjali", " Canada", " Mexico"]}}
+#    {}
+# ).count()
+# print (countryCount)
 
 # db.fearlessData.update_many ({},{'$set': {'Replied': ""}})
 
@@ -65,14 +65,14 @@ print (countryCount)
 
 
 #**********************************************
-#Insert a new field, Replied, and set it to True when post request is made 
+# Insert a new field, Replied, and set it to True when post request is made 
 # db.fearlessData.update_many({},{'$set':{"New_Field":"TEST_Wedding_v5"}})
 # db.fearlessData.update_many({},{'$set':{"Replied":"Ketan"}})
 
 # db.fearlessData.update_one({},{'$set':{"Replied3":"YOLO"}})
 # print (db.fearlessData.find({}))
 
-#Find list of all URLs
+# Find list of all URLs
 # links = db.fearlessData.find(
 #     {},{'RequestLink':1,"_id":0,'Name':1 }
 # )
