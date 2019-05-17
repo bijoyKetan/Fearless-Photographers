@@ -62,3 +62,7 @@ class FearlessItem(scrapy.Item):
     Replied = scrapy.Field(
         output_processor = TakeFirst()
     )
+
+    ScrapedTime = scrapy.Field(
+        output_processor = TakeFirst()
+    )

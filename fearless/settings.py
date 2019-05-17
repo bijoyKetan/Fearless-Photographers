@@ -89,5 +89,9 @@ AUTOTHROTTLE_DEBUG = True
 #HTTPCACHE_IGNORE_HTTP_CODES = []
 #HTTPCACHE_STORAGE = 'scrapy.extensions.httpcache.FilesystemCacheStorage'
 
-MONGO_URI= 'mongodb://localhost:27017'
-MONGO_DB= 'fearless'
+# MONGO_URI= 'mongodb://localhost:27017'
+# MONGO_DB= 'fearless'
+
+
+MONGO_URI= 'mongodb://heroku_wpb2xwlb:4n07b44ab4cc088il5ium53eq8@ds145146.mlab.com:45146/heroku_wpb2xwlb'
+MONGO_DB= 'heroku_wpb2xwlb'

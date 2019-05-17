@@ -3,12 +3,16 @@ from scrapy.http import FormRequest
 import logging
 from fearless.items import FearlessItem
 from pymongo import MongoClient
+import datetime
+from pytz import timezone
+from fearless import settings, pipelines
 
 
 class ReplySpider(scrapy.Spider):
     #Connent to mongoDB client and to the database
-    client = MongoClient('mongodb://127.0.0.1:27017')
-    db = client.fearless
+    # client = MongoClient('mongodb://127.0.0.1:27017')
+    
+    db = settings.MONGO_DB
     
     #Photographer for whom the replied will be made.
     photographer_id = '5138'
@@ -16,7 +20,12 @@ class ReplySpider(scrapy.Spider):
     #Spider identity
     name = 'inquiryReply'
 
+    #Allowed domains
     allowed_domains = ['fearlessphotographers.com']
+
+    #Current time (EST)
+    tz = timezone ('EST')
+    currentTime = str(datetime.datetime.now(tz))
 
     # The start URLs are filters to contain only those RequestLink that:
     # 1. Do not have the field "Replied"
@@ -29,6 +38,9 @@ class ReplySpider(scrapy.Spider):
         
         #Query that inserts a new field in the document, Replied60, and sets it to True.
         self.db.fearlessData.update_many({'RequestLink': response.url},{'$set':{"Replied":True}})
+
+        #Insert a new field with the timestamp when reply is sent
+        self.db.fearlessData.update_many({'RequestLink': response.url},{'$set':{"RepliedTime":self.currentTime}})
 
         #Make the POST request to filtered inquiries.
         yield scrapy.FormRequest.from_response (response, formdata = {

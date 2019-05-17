@@ -10,8 +10,11 @@ from scrapy.crawler import CrawlerRunner
 from scrapy.utils.log import configure_logging
 from scrapy.utils.project import get_project_settings
 
+#Import packages for schedling spiders
+import requests, pytz
+from apscheduler.schedulers.twisted import TwistedScheduler
+
 #Execute the spiders every X hours
-#Email the list of responses each day at 9pm EST
 
 configure_logging()
 runner = CrawlerRunner(settings=get_project_settings())
@@ -22,5 +25,11 @@ def crawl():
     yield runner.crawl(ReplySpider)
     reactor.stop()
 
-crawl()
-reactor.run()
+
+
+if __name__ == '__main__':
+    scheduler = TwistedScheduler(timezone = pytz.timezone('US/Eastern'))
+    scheduler.add_job (crawl,'cron', day_of_week = 'mon-sun', hour = '15', minute = '0')
+    schedueler.start()
+    # crawl()
+    reactor.run()

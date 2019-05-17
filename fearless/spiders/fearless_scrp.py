@@ -7,6 +7,8 @@ from scrapy.crawler import CrawlerProcess
 from twisted.internet import reactor
 from scrapy.crawler import CrawlerRunner
 from scrapy.utils.log import configure_logging
+import datetime
+from pytz import timezone
 
 
 #First spider that scrapes the inquiries from potential clients. 
@@ -34,4 +36,5 @@ class FearlessScraper (scrapy.Spider):
             loader.add_xpath(field_name = 'Available', xpath = ".//span[@class='info-label' and position() = 6]/following-sibling::text()[1]")
             loader.add_xpath(field_name = 'RequestLink', xpath = ".//@href")
             loader.add_value(field_name = 'Replied', value='')
+            loader.add_value(field_name = 'ScrapedTime', value = ReplySpider.currentTime)
             yield loader.load_item()
