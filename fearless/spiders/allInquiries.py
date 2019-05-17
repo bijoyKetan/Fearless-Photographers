@@ -9,9 +9,10 @@ class AllinquiriesSpider(scrapy.Spider):
     name = 'allInquiries'
 
     # We're going to crawl only 250 pages per scraping seesion.
-    # This is to ensure we scrape the website gently.     
-    start_request = 2000
-    end_request = start_request+250
+    # This is to ensure we scrape the website gently.   
+    # For this website, we'll scrape from ID 1000 - 8000  
+    start_request = 6000
+    end_request = start_request+249
 
     def start_requests(self):
         yield scrapy.Request(url="https://www.fearlessphotographers.com/find-wedding-photographers.cfm?requestID={}".format(self.start_request),

@@ -10,6 +10,8 @@ from scrapy.crawler import CrawlerRunner
 from scrapy.utils.log import configure_logging
 from scrapy.utils.project import get_project_settings
 
+#Execute the spiders every X hours
+#Email the list of responses each day at 9pm EST
 
 configure_logging()
 runner = CrawlerRunner(settings=get_project_settings())
@@ -21,4 +23,4 @@ def crawl():
     reactor.stop()
 
 crawl()
-reactor.run() # the script will block here until the last crawl call is finished
+reactor.run()
