@@ -11,8 +11,9 @@ from fearless import settings, pipelines
 class ReplySpider(scrapy.Spider):
     #Connent to mongoDB client and to the database
     # client = MongoClient('mongodb://127.0.0.1:27017')
-    
-    db = settings.MONGO_DB
+
+    client = MongoClient(settings.MONGO_URI)
+    db = client.get_default_database()
     
     #Photographer for whom the replied will be made.
     photographer_id = '5138'
