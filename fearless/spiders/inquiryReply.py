@@ -9,10 +9,15 @@ from fearless import settings, pipelines
 
 
 class ReplySpider(scrapy.Spider):
-    #Connent to mongoDB client and to the database
+    # #Testing by connecting to local database
     # client = MongoClient('mongodb://127.0.0.1:27017')
+    # db = client.fearless
 
-    client = MongoClient(settings.MONGO_URI)
+    # Connect to Heroku database
+    client = MongoClient(settings.MONGO_URI,
+                     connectTimeoutMS=30000,
+                     socketTimeoutMS=None,
+                     socketKeepAlive=True)
     db = client.get_default_database()
     
     #Photographer for whom the replied will be made.
