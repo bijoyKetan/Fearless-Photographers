@@ -22,7 +22,7 @@ runner = CrawlerRunner(settings=get_project_settings())
 @defer.inlineCallbacks
 def crawl():
     yield runner.crawl(FearlessScraper)
-    yield runner.crawl(ReplySpider)
+    # yield runner.crawl(ReplySpider)
     reactor.stop()
 
 
