@@ -22,15 +22,15 @@ runner = CrawlerRunner(settings=get_project_settings())
 @defer.inlineCallbacks
 def crawl():
     yield runner.crawl(FearlessScraper)
-    # yield runner.crawl(ReplySpider)
+    yield runner.crawl(ReplySpider)
     reactor.stop()
 
 
 
 if __name__ == '__main__':
-    # scheduler = TwistedScheduler(timezone = pytz.timezone('US/Eastern'))
-    # scheduler.add_job (crawl,'cron', day_of_week = 'mon-sun', hour = '16', minute = '0')
-    # schedueler.start()
-    
-    crawl()
+    scheduler = TwistedScheduler(timezone = pytz.timezone('US/Eastern'))
+    scheduler.add_job (crawl,'cron', day_of_week = 'mon-sun', hour = '16', minute = '0')
+    schedueler.start()
+
+    # crawl()
     reactor.run()
