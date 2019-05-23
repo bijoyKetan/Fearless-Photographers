@@ -13,11 +13,8 @@ class ReplySpider(scrapy.Spider):
     # client = MongoClient('mongodb://127.0.0.1:27017')
     # db = client.fearless
 
-    # uri = "mongodb://<dbuser>:<dbpassword>@<host1>:<port1>,<host2>:<port2>/<dbname>?replicaSet=<replicaSetName>&ssl=true"
-    MONGO_URI= 'mongodb://heroku_wpb2xwlb:4n07b44ab4cc088il5ium53eq8@ds145146.mlab.com:45146/heroku_wpb2xwlb?replicaSet=<replicaSetName>&ssl=true'
-
     # Connect to Heroku database
-    client = MongoClient(MONGO_URI,
+    client = MongoClient(settings.MONGO_URI,
                      connectTimeoutMS=30000,
                      socketTimeoutMS=None,
                      socketKeepAlive=True)
