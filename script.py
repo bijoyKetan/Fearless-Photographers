@@ -29,8 +29,8 @@ def crawl():
 
 if __name__ == '__main__':
     scheduler = TwistedScheduler(timezone = pytz.timezone('US/Eastern'))
-    scheduler.add_job (crawl,'cron', day_of_week = 'mon-sun', hour = '17', minute = '31')
-    schedueler.start()
+    scheduler.add_job (crawl,'cron', day_of_week = 'mon-sun', hour = '17', minute = '35')
+    scheduler.start()
 
     # crawl()
     reactor.run()
