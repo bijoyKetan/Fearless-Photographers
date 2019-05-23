@@ -6,12 +6,12 @@
 #**********************************************
 
 
-from pymongo import MongoClient
-from pprint import pprint
+# from pymongo import MongoClient
+# from pprint import pprint
 
-#Connent to mongoDB client and to the database
-client = MongoClient('mongodb://127.0.0.1:27017')
-db = client.fearless
+# #Connent to mongoDB client and to the database
+# client = MongoClient('mongodb://127.0.0.1:27017')
+# db = client.fearless
 
 #**********************************************
 #Comment/uncomment the following sections to test these snippets of code.
