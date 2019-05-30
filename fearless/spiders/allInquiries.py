@@ -11,7 +11,7 @@ class AllinquiriesSpider(scrapy.Spider):
     # We're going to crawl only 250 pages per scraping seesion.
     # This is to ensure we scrape the website gently.   
     # For this website, we'll scrape from ID 1000 - 8000  
-    start_request = 3750
+    start_request = 8250
     end_request = start_request+249
 
     def start_requests(self):
